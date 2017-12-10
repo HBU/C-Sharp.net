@@ -1,0 +1,13 @@
+D:\教材编写\教材（清华-基础部份）\Test\Test7\Test7\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\教材编写\教材（清华-基础部份）\Test\Test7\Test7\obj\x86\Debug\Test7.Properties.Resources.resources
+D:\教材编写\教材（清华-基础部份）\Test\Test7\Test7\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\教材编写\教材（清华-基础部份）\Test\Test7\Test7\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\教材编写\教材（清华-基础部份）\Test\Test7\Test7\bin\Debug\Test7.exe
+D:\教材编写\教材（清华-基础部份）\Test\Test7\Test7\bin\Debug\Test7.pdb
+D:\教材编写\教材（清华-基础部份）\Test\Test7\Test7\obj\x86\Debug\Test7_1.Test7_1.resources
+D:\教材编写\教材（清华-基础部份）\Test\Test7\Test7\obj\x86\Debug\Test7.exe
+D:\教材编写\教材（清华-基础部份）\Test\Test7\Test7\obj\x86\Debug\Test7.pdb
+D:\教材编写\教材（清华-基础部份）\Test\Test7\Test7\obj\x86\Debug\Test7_2.Test7_2.resources
+D:\教材编写\教材（清华-基础部份）\Test\Test7\Test7\obj\x86\Debug\Test7_4.Test7_4.resources
+D:\教材编写\教材（清华-基础部份）\Test\Test7\Test7\obj\x86\Debug\Test7_5.Test7_5.resources
+D:\教材编写\教材（清华-基础部份）\Test\Test7\Test7\obj\x86\Debug\Exp7_1.Exp7_1.resources

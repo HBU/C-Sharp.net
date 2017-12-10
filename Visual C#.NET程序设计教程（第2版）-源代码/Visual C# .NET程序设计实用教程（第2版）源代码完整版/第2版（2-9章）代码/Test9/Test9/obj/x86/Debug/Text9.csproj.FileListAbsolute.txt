@@ -1,0 +1,5 @@
+D:\教材编写\教材（人邮）\Test\Text9\Text9\bin\Debug\Text9.exe
+D:\教材编写\教材（人邮）\Test\Text9\Text9\bin\Debug\Text9.pdb
+D:\教材编写\教材（人邮）\Test\Text9\Text9\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\教材编写\教材（人邮）\Test\Text9\Text9\obj\x86\Debug\Text9.exe
+D:\教材编写\教材（人邮）\Test\Text9\Text9\obj\x86\Debug\Text9.pdb

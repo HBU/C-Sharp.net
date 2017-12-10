@@ -1,0 +1,360 @@
+【实例9-1
+using System;
+using System.Threading;    //注意对命名空间的引用
+class Program
+{
+    static void Main(string[] args)
+    {
+        Thread.CurrentThread.Name = "主线程";      //修改当前线程的线程名
+        Thread objThread = new Thread(new ThreadStart(ActionMethod));    //创建线程
+        objThread.Name = "子线程";      //设置线程名
+        objThread.Start();      //启动线程
+        ActionMethod();      //在主线程中调用ActionMethod()
+    }
+    static void ActionMethod()     //线程调用的方法
+    {
+        for (int count = 1; count <= 5; count++)
+        {
+            Console.WriteLine("{0}:第{1}次", Thread.CurrentThread.Name,count);
+        }
+    }
+}
+【实例9-2】
+using System;
+using System.Threading;
+class Test9_2
+{
+    public static Thread sleeper;
+    public static Thread awaker;
+    public void SleepThread()
+    {
+        for (int i = 1; i < 10; i++)
+        {
+            Console.Write(i + ",");
+            if (i == 4 || i == 8)
+            {
+                Console.WriteLine("Thread is sleep at " + i);
+                Thread.Sleep(20);  //暂停线程
+            }
+        }
+    }
+   public void AwakeThread()
+    {
+        for (char ch = 'A'; ch < 'K'; ch++)
+        {
+            Console.Write(ch + ",");
+            if (sleeper.ThreadState == System.Threading.ThreadState.WaitSleepJoin)
+            {
+                Console.WriteLine("Thread is awake at " + ch);
+                sleeper.Interrupt();                    //中断线程 
+            }
+        }
+    }
+    static void Main(string[] args)
+    {
+        Test9_2 mi = new Test9_2();
+        sleeper = new Thread(new ThreadStart(mi.SleepThread));      //创建第1个线程
+        awaker = new Thread(new ThreadStart(mi.AwakeThread));     //创建第2个线程
+        sleeper.Start();            //启动第1个线程
+        awaker.Start();            //启动第2个线程 
+    }
+}
+修改public void SleepThread( )方法如下：
+public void SleepThread()
+{
+    for (int i = 1; i < 10; i++)
+    {
+        Console.Write(i + ",");
+        if (i == 4 || i == 8)
+        {
+            Console.WriteLine("Thread is sleep at " + i);
+            try
+            {
+                Thread.Sleep(20);  //暂停线程
+            }
+            catch (ThreadInterruptedException e) //捕获中断异常
+            {
+                Console.WriteLine("Thread is interrupted");
+            }
+        }
+    }
+}
+【实例9-3】
+using System;
+using System.Threading;//注意对命名空间的引用
+using System.Runtime.Remoting.Contexts; //要使用Synchronization，需引用该命名空间
+class Program
+{
+    static void Main(string[] args)
+    {
+        CountClass c = new CountClass();
+        Thread readThread = new Thread(new ThreadStart(c.ReadTask));//创建线程
+        readThread.Name = "读线程";//设置线程名
+        Thread writeThread = new Thread(new ThreadStart(c.WriteTask));//创建线程
+        writeThread.Name = "写线程";//设置线程名
+        readThread.Start();
+        writeThread.Start();
+    }
+}
+class CountClass
+{
+    public int count = 42;
+    public void ReadTask()//读取count的值
+    {
+        for (int i = 1; i <5; i++)
+        {
+            Console.WriteLine("{0}:Count={1}", Thread.CurrentThread.Name, count);
+            
+        }
+    }
+    public void WriteTask()    //修改count的值
+    {
+        for (int i = 1; i < 5; i++)
+        {
+            count++;
+            Console.WriteLine("{0}:Count={1}", Thread.CurrentThread.Name, count);
+        }
+    }
+}
+【实例9-4】
+class CountClass 
+{
+    public int count = 42;
+    public void ReadTask()//读取count的值
+    {
+        Monitor.Enter(this);   //加上Monitor锁
+        Console.WriteLine("进入代码同步区域");
+        for (int i = 1; i < 5; i++)
+        {
+            Console.WriteLine("{0}:Count={1}", Thread.CurrentThread.Name, count);
+        }
+        Console.WriteLine("退出代码同步区域");
+        Monitor.Exit(this);   //释放Monitor锁
+    }
+    public void WriteTask()//修改count的值
+    {
+        Monitor.Enter(this);   //加上Monitor锁
+        Console.WriteLine("进入代码同步区域");
+        for (int i = 1; i < 5; i++)
+        {
+            count++;
+            Console.WriteLine("{0}:Count={1}", Thread.CurrentThread.Name, count);
+        }
+        Console.WriteLine("退出代码同步区域");
+        Monitor.Exit(this);   //释放Monitor锁
+    }
+}
+上例代码可用Lock语句来实现，代码如下：
+class CountClass 
+{
+    public int count = 42;
+    public void ReadTask()//读取count的值
+    {
+        lock (this)
+        {
+            Console.WriteLine("进入代码同步区域");
+            for (int i = 1; i < 5; i++)
+            {
+                Console.WriteLine("{0}:Count={1}", Thread.CurrentThread.Name, count);
+            }
+            Console.WriteLine("退出代码同步区域");
+        }
+    }
+    public void WriteTask()   //修改count的值
+    {
+        lock (this)
+        {
+            Console.WriteLine("进入代码同步区域");
+            for (int i = 1; i < 5; i++)
+            {
+                count++;
+                Console.WriteLine("{0}:Count={1}", Thread.CurrentThread.Name, count);
+            }
+            Console.WriteLine("退出代码同步区域");
+        }
+    }
+}
+【实例9-5】
+using System;
+using System.Threading;//注意对命名空间的引用
+class Program
+{
+    static void Main(string[] args)
+    {
+        Resource r = new Resource();
+        Thread t1 = new Thread(new ThreadStart(r.Write));//创建写线程1
+        Thread t2 = new Thread(new ThreadStart(r.Write));//创建写线程2
+        Thread t3 = new Thread(new ThreadStart(r.Read));//创建读线程1
+        Thread t4 = new Thread(new ThreadStart(r.Read));//创建读线程2
+        t1.Name = "写线程1"; t2.Name = "写线程2"; 
+        t3.Name = "读线程1"; t4.Name = "读线程2";   //设置线程名
+        t1.Start(); t3.Start(); t2.Start(); t4.Start();        //启动线程，顺序为：写读写读
+    } 
+}
+class Resource
+{
+    ReaderWriterLock rwl = new ReaderWriterLock();
+    int count = 0;
+    public void Read()//读操作
+    {
+        rwl.AcquireReaderLock(Timeout.Infinite);//请求读锁
+        try
+        {
+          Console.WriteLine("+{0}进入读方法！count={1}", Thread.CurrentThread.Name, count);
+          Thread.Sleep(500);
+        }
+        finally
+        {
+            rwl.ReleaseReaderLock();//释放读锁
+            Console.WriteLine("-{0}离开读方法！", Thread.CurrentThread.Name);
+        }
+    }
+    public void Write()//写操作
+    {
+        rwl.AcquireWriterLock(Timeout.Infinite);//请求写锁
+        try
+        {
+            count++;
+            Console.WriteLine("+{0}进入写方法！count={1}", 
+                           Thread.CurrentThread.Name, count);
+            Thread.Sleep(500);
+        }
+        finally
+        {
+            rwl.ReleaseWriterLock();//释放写锁
+            Console.WriteLine("-{0}离开写方法！", Thread.CurrentThread.Name);
+        }
+    }
+}
+【实例9-6】
+using System;
+using System.Threading;
+public class Test9_6
+{
+    public static void Main()
+    {
+        //将任务加入线程池的任务队列 
+        ThreadPool.QueueUserWorkItem(new WaitCallback(ThreadProc));
+        Console.WriteLine("Main thread does some work, then sleeps.");
+        //主线程等待 
+        Thread.Sleep(1000);
+        Console.WriteLine("Main thread exits.");
+    }
+    //线程函数
+    static void ThreadProc(Object stateInfo)
+    {
+        //线程函数向控制台输出
+        Console.WriteLine("Hello from the thread pool.");
+    }
+}
+【实例9-7】
+using System;
+using System.Threading;
+public delegate string AsyncDelegate(int callTime); //定义一个委托，用来提供异步调用的接口
+class Test9_7
+{
+    static void Main(string[] args)
+    {
+        AsyncDemo ad = new AsyncDemo();
+        AsyncDelegate dlgt = new AsyncDelegate(ad.TestMethod); //封装要异步调用的方法
+        //开始异步调用（指定该方法的执行时间—3秒），并指定回调方法
+        IAsyncResult ar = dlgt.BeginInvoke(3000, new AsyncCallback(CallbackMethod), dlgt); 
+        Console.WriteLine("主线程继续工作...");  //程序继续执行
+        Thread.Sleep(1000);   //模拟主程序需要执行的时间—1秒
+        Console.WriteLine("主线程工作完成，执行了1秒，等待异步调用完成....");
+        Console.ReadKey();
+    }
+    static void CallbackMethod(IAsyncResult ar)  //异步调用结束后的回调方法
+    {
+        //从异步操作的状态中提取AsyncDelegate委托
+        AsyncDelegate dlgt = (AsyncDelegate)ar.AsyncState; 
+        string result = dlgt.EndInvoke(ar);  //获取异步调用的结果
+        Console.WriteLine("异步调用完成,{0}!",result);
+    }
+}
+class AsyncDemo
+{
+    public string TestMethod(int callTime)   //异步调用的方法
+    {
+        Console.WriteLine("异步调用的方法开始...");
+        Thread.Sleep(callTime);    //模拟该方法需要执行的时间—3秒
+        return "方法完成需要的时间是" + callTime / 1000 + "秒";
+    }
+}
+则可以使用轮询的方式获取操作结果，修改main函数如下：
+static void Main(string[] args)
+{
+    AsyncDemo ad = new AsyncDemo();
+    AsyncDelegate dlgt = new AsyncDelegate(ad.TestMethod); //封装要异步调用的方法
+    //开始异步调用（指定该方法的执行时间—3秒），没有指定回调方法
+    IAsyncResult ar = dlgt.BeginInvoke(3000, null,null);
+    Console.WriteLine("主线程继续工作...");  //程序继续执行
+    Thread.Sleep(1000);   //模拟主程序需要执行的时间—1秒
+    Console.WriteLine("主线程工作完成，执行了1秒，等待异步调用完成....");
+    while (!ar.IsCompleted)  // 轮询异步调用是否完成
+    {
+        Thread.Sleep(1000);   //模拟主程序下次轮询的时间—1秒
+        Console.WriteLine("主线程工作完成，等待异步调用完成....");
+    }
+    string result = dlgt.EndInvoke(ar); //调用结束方法，获取调用结果。
+    Console.WriteLine("异步调用完成,{0}!", result);
+    Console.ReadKey();
+}
+【实例9-8】
+using System;
+using System.IO;
+using System.Text;
+using System.Threading;
+class Test9_8
+{
+    static void Main(string[] args)
+    { 
+        AsynchIOTester theApp=new AsynchIOTester("test.txt"); //实例化异步I/O测试器
+        AsyncCallback myCallback = new AsyncCallback(OnReadDone); //创建回调委托对象
+        IAsyncResult ar = theApp.InputStream.BeginRead(             //开始异步读操作
+            theApp.Buffer,         //存放结果的缓存
+            0,                   //偏移值
+            theApp.Buffer.Length,   //缓冲大小
+            myCallback,          //回调方法
+            (object)theApp);       //局部状态对象
+        Console.WriteLine("+++++主线程继续工作...");  //程序继续执行
+        Thread.Sleep(1000);      //模拟主程序需要执行的时间—1秒
+        Console.WriteLine("\n\n+++++主线程工作完成，执行了1秒，等待异步调用完成.... \n ");
+        Console.ReadKey();
+    }
+   static void OnReadDone(IAsyncResult ar)    //回调方法
+    {
+       AsynchIOTester test = (AsynchIOTester)ar.AsyncState;  //获取局部状态对象
+       int byteCount = test.InputStream.EndRead(ar);   //结束异步读操作，返回读取的字节数
+       if (byteCount > 0)
+       {
+           Thread.Sleep(100);   //模拟下一次读取间隔0.1秒，以免较快读完
+          //转换成指对编码的字符串
+           string s = Encoding.GetEncoding("GB2312").GetString(test.Buffer, 0, byteCount); 
+           Console.Write(s);
+           AsyncCallback myCallback = new AsyncCallback(OnReadDone);//创建回调委托对象
+           //如果没有读完，再次异步调用BeginRead
+           test.InputStream.BeginRead(test.Buffer, 0, test.Buffer.Length, myCallback, (object)test);
+       }
+    }
+}
+class AsynchIOTester   //异步I/O测试器
+{
+    private Stream inputStream;  //输入流
+    private byte[] buffer;       //存入读入数据的缓冲区
+    private string filename;
+    public AsynchIOTester(string filename)  //构造函数
+    {
+        this.filename = filename;
+        inputStream = File.OpenRead(filename);  //打开文件
+        buffer = new byte[16];   //分配缓冲
+    }
+    public byte[] Buffer
+    {
+        get {return buffer;}
+    }
+    public Stream InputStream
+    {
+        get{return inputStream;}
+    }
+}
