@@ -1,0 +1,9 @@
+附加数据库时：
+修改用户安全权限
+获取最高权限后
+附加数据库成功
+
+https://jingyan.baidu.com/article/c1a3101e8b34c2de656debbe.html
+
+更改app.config信息
+DavidConn后面的内容配置成自己的数据库连接字符串

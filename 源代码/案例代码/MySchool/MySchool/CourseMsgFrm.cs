@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 namespace MySchool
 {
     public partial class CourseMsgFrm : Form
@@ -69,7 +70,7 @@ namespace MySchool
         private void btnYes_Click(object sender, EventArgs e)
         {
             int isRequired = rdoRequired.Checked ? 1 :0;
-            string connString = @"Data Source=YJ\SQLEXPRESS;Initial Catalog=MySchool;Integrated Security=True";
+            string connString = ConfigurationManager.AppSettings["DavidConn"]; //@"Data Source=YJ\SQLEXPRESS;Initial Catalog=MySchool;Integrated Security=True";
             string sql = String.Format("INSERT INTO CourseMsg(CourseName, CourseClass, Required,Credit, PrelectionCredit, ExperimentCredit) VALUES('{0}','{1}','{2}','{3}','{4}','{5}')", 
         courseName, courseClass, isRequired, credit, prelectionCredit, experimentCredit); 
             using( SqlConnection conn = new SqlConnection(connString))

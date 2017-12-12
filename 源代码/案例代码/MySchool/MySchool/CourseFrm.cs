@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace MySchool
 {
@@ -21,7 +22,7 @@ namespace MySchool
         private DataSet ds = new DataSet("MyScool");
         private void ShowCourses()
         {
-            string connString = @"Data Source=.\sqlexpress;initial catalog=MySchool; integrated security=true";
+            string connString = ConfigurationManager.AppSettings["DavidConn"]; //@"Data Source=.\sqlexpress;initial catalog=MySchool; integrated security=true";
             string sql = "select CourseId as 课程ID, CourseName as 课程名称, CourseClass as 课程类别, Required 是否必修,Credit as 学分, PrelectionCredit as 理论学时, ExperimentCredit as 实验学时 from CourseMsg";
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();

@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace MySchool
 {
     public partial class StudentFrm : Form
     {
         private int current=1;
-        private string connString= @"Data Source=.\SQLEXPRESS;Initial Catalog=MySchool;Integrated Security=True";
+        private string connString = ConfigurationManager.AppSettings["ConnectionString"];//@"Data Source=.\SQLEXPRESS;Initial Catalog=MySchool;Integrated Security=True";
         public StudentFrm()
         {
             InitializeComponent();
@@ -25,7 +26,8 @@ namespace MySchool
         private void ShowCurrentStudent()
         { 
             string sql =  String.Format("SELECT * FROM StudentMsg WHERE StudentNo='{0}'",current);//SQL语句
-            using( SqlConnection conn = new SqlConnection(connString))
+            string connString = ConfigurationManager.AppSettings["DavidConn"];
+            using ( SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();	//打开数据库连接 
                 SqlCommand comm = new SqlCommand(sql, conn); //创建 Command 对象

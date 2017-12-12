@@ -44,9 +44,10 @@
             this.lblMain.Font = new System.Drawing.Font("宋体", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblMain.Image = ((System.Drawing.Image)(resources.GetObject("lblMain.Image")));
             this.lblMain.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblMain.Location = new System.Drawing.Point(67, 35);
+            this.lblMain.Location = new System.Drawing.Point(100, 52);
+            this.lblMain.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMain.Name = "lblMain";
-            this.lblMain.Size = new System.Drawing.Size(264, 33);
+            this.lblMain.Size = new System.Drawing.Size(389, 48);
             this.lblMain.TabIndex = 0;
             this.lblMain.Text = "   成绩管理系统";
             this.lblMain.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -57,9 +58,10 @@
             this.lblName.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblName.Image = ((System.Drawing.Image)(resources.GetObject("lblName.Image")));
             this.lblName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblName.Location = new System.Drawing.Point(31, 96);
+            this.lblName.Location = new System.Drawing.Point(46, 144);
+            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(115, 19);
+            this.lblName.Size = new System.Drawing.Size(166, 28);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "   用户名：";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -70,33 +72,39 @@
             this.lblPwd.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblPwd.Image = ((System.Drawing.Image)(resources.GetObject("lblPwd.Image")));
             this.lblPwd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblPwd.Location = new System.Drawing.Point(29, 132);
+            this.lblPwd.Location = new System.Drawing.Point(44, 198);
+            this.lblPwd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPwd.Name = "lblPwd";
-            this.lblPwd.Size = new System.Drawing.Size(116, 19);
+            this.lblPwd.Size = new System.Drawing.Size(166, 28);
             this.lblPwd.TabIndex = 2;
             this.lblPwd.Text = "   密  码：";
             this.lblPwd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(148, 94);
+            this.txtName.Location = new System.Drawing.Point(222, 141);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(170, 21);
+            this.txtName.Size = new System.Drawing.Size(253, 28);
             this.txtName.TabIndex = 3;
+            this.txtName.Text = "admin";
             // 
             // txtPwd
             // 
-            this.txtPwd.Location = new System.Drawing.Point(149, 132);
+            this.txtPwd.Location = new System.Drawing.Point(224, 198);
+            this.txtPwd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPwd.Name = "txtPwd";
             this.txtPwd.PasswordChar = '*';
-            this.txtPwd.Size = new System.Drawing.Size(170, 21);
+            this.txtPwd.Size = new System.Drawing.Size(253, 28);
             this.txtPwd.TabIndex = 4;
+            this.txtPwd.Text = "123";
             // 
             // btnYes
             // 
-            this.btnYes.Location = new System.Drawing.Point(98, 183);
+            this.btnYes.Location = new System.Drawing.Point(147, 274);
+            this.btnYes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnYes.Name = "btnYes";
-            this.btnYes.Size = new System.Drawing.Size(75, 23);
+            this.btnYes.Size = new System.Drawing.Size(112, 34);
             this.btnYes.TabIndex = 5;
             this.btnYes.Text = "确定(&Y)";
             this.btnYes.UseVisualStyleBackColor = true;
@@ -105,9 +113,10 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(243, 183);
+            this.btnCancel.Location = new System.Drawing.Point(364, 274);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(112, 34);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "取消(&C)";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -116,10 +125,10 @@
             // Login
             // 
             this.AcceptButton = this.btnYes;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(404, 225);
+            this.ClientSize = new System.Drawing.Size(606, 338);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnYes);
             this.Controls.Add(this.txtPwd);
@@ -129,6 +138,7 @@
             this.Controls.Add(this.lblMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "Login";
             this.Text = "用户登录";

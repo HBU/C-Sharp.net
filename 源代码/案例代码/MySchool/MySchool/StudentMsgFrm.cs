@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace MySchool
 {
@@ -81,7 +82,7 @@ namespace MySchool
             if (checkBox4.Checked) hobby += "、" + checkBox4.Text;
             if (checkBox5.Checked) hobby += "、" + checkBox5.Text;
             if (checkBox6.Checked) hobby += "、" + checkBox6.Text;
-            string connString =  @"Data Source=.\SQLEXPRESS;Initial Catalog=MySchool;Integrated Security=True";
+            string connString = ConfigurationManager.AppSettings["DavidConn"]; //@"Data Source=.\SQLEXPRESS;Initial Catalog=MySchool;Integrated Security=True";
             string sql = String.Format("INSERT INTO StudentMsg(StudentName,Sex,Birthday,Department,Speciality,Hobby) VALUES('{0}','{1}','{2}','{3}','{4}','{5}')",txtName.Text,sex,dtBirthday.Value,dept,spec,hobby);//SQL语句
             using( SqlConnection conn = new SqlConnection(connString))
             {

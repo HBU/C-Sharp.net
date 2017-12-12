@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 namespace MySchool
 {
     public partial class Login : Form
@@ -21,7 +22,7 @@ namespace MySchool
             
             string userName = txtName.Text;
             string password = txtPwd.Text;
-            string connString = @"Data Source=.\sqlexpress;Initial Catalog=MySchool;Integrated Security=true"; 
+            string connString = ConfigurationManager.AppSettings["DavidConn"];// @"Data Source=.;Initial Catalog=MySchool;Persist Security Info=True;User ID=sa;Password=sql"; 
             SqlConnection conn = new SqlConnection(connString);
             //获取用户名和密码匹配的行的数量的SQL语句
             string sql =String.Format("select count(*) from [User] where UserName='{0}'and password='{1}'",userName,password);
