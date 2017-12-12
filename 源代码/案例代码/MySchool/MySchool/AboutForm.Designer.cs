@@ -75,13 +75,15 @@
             // 
             // btnYes
             // 
-            this.btnYes.Location = new System.Drawing.Point(319, 503);
+            this.btnYes.BackColor = System.Drawing.Color.White;
+            this.btnYes.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btnYes.Location = new System.Drawing.Point(196, 503);
             this.btnYes.Margin = new System.Windows.Forms.Padding(4);
             this.btnYes.Name = "btnYes";
             this.btnYes.Size = new System.Drawing.Size(112, 34);
             this.btnYes.TabIndex = 2;
             this.btnYes.Text = "确定(&Y)";
-            this.btnYes.UseVisualStyleBackColor = true;
+            this.btnYes.UseVisualStyleBackColor = false;
             this.btnYes.Click += new System.EventHandler(this.btnYes_Click);
             // 
             // pictureBox1
@@ -90,7 +92,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(33, 105);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(182, 190);
+            this.pictureBox1.Size = new System.Drawing.Size(199, 190);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -128,6 +130,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(504, 550);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
