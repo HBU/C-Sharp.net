@@ -117,4 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>Clone就是将远程库的代码拷贝到本地。
+
+commit将工作空间修改提交到本地库。
+
+push将本地库修改提交到远程库。
+
+pull 从远程拉取最新版本 到本地，自动合并 merge。
+
+fetch从远程获取最新版本 到本地，不会自动合并 merge。
+
+reset 将当前版本回退到选定的版本
+
+checkout 创建分支，切换分支
+
+tag 是给版本打个标记，方便用于识别查看等操作。
+
+同步 提取+拉取</value>
+  </data>
 </root>

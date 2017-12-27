@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,9 +50,7 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(343, 271);
             this.richTextBox1.TabIndex = 4;
-            this.richTextBox1.Text = "Clone就是将远程库的代码拷贝到本地。\n\ncommit将工作空间修改提交到本地库。\n\npush将本地库修改提交到远程库。\n\npull 从远程拉取最新版本 到本地" +
-    "  自动合并 merge\n\nfetch   从远程获取最新版本 到本地   不会自动合并 merge\n\nreset 将当前版本回退到选定的版本\n\ncheckou" +
-    "t 创建分支，切换分支\n\ntag 是给版本打个标记，方便用于识别查看等操作。";
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // label1
             // 
