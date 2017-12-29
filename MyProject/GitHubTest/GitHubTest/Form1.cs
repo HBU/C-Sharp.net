@@ -21,5 +21,10 @@ namespace GitHubTest
         {
             MessageBox.Show("Hello world ");
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hello world ");
+        }
     }
 }
