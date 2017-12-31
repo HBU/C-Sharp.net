@@ -1,5 +1,0 @@
-D:\教材编写\教材（人邮）\Test\Test9\Test9\bin\Debug\Test9.exe
-D:\教材编写\教材（人邮）\Test\Test9\Test9\bin\Debug\Test9.pdb
-D:\教材编写\教材（人邮）\Test\Test9\Test9\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\教材编写\教材（人邮）\Test\Test9\Test9\obj\x86\Debug\Test9.exe
-D:\教材编写\教材（人邮）\Test\Test9\Test9\obj\x86\Debug\Test9.pdb
