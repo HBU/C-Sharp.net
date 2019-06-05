@@ -11,7 +11,9 @@ using System.Windows.Forms;
 
 namespace ID3
 {
-    
+
+    //ID3详解 https://blog.csdn.net/qq_36330643/article/details/77415451
+
     public partial class Form1 : Form
     {
         public static string resultSring="";
