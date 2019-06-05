@@ -105,20 +105,17 @@ namespace ID3
             {
                 result = "Attribute not found";
             }
-
+            MessageBox.Show("result:" + result);
             return result;
         }
 
         public static TreeNode Learn(DataTable data, string edgeName)
         {
-            //MessageBox.Show("Tree Learn begin!");
             var root = GetRootNode(data, edgeName);
-            //MessageBox.Show("GetRootNode begin!");
             foreach (var item in root.NodeAttribute.DifferentAttributeNames)
             {
                 // if a leaf, leaf will be added in this method
                 var isLeaf = CheckIfIsLeaf(root, data, item);
-
                 // make a recursive call as long as the node is not a leaf
                 if (!isLeaf)
                 {
@@ -126,7 +123,6 @@ namespace ID3
                     root.ChildNodes.Add(Learn(reducedTable, item));
                 }
             }
-
             return root;
         }
 
@@ -263,7 +259,7 @@ namespace ID3
                 .Select(item => item[0, 0] / (double)totalRows)
                 .Select(division => -division * Math.Log(division, 2))
                 .ToList();
-
+            MessageBox.Show("stepsForCalculation:" + stepsForCalculation.Sum());
             return stepsForCalculation.Sum();
         }
 
@@ -294,7 +290,7 @@ namespace ID3
                 int[,] array = { { amount, positiveAmount } };
                 foundValues.Add(array);
             }
-
+            //MessageBox.Show("foundValues:" + foundValues);
             return foundValues;
         }
 
