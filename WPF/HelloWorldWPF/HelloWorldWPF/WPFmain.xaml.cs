@@ -10,31 +10,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace HelloWorldWPF
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// WPFmain.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WPFmain : Window
     {
-        public MainWindow()
+        public WPFmain()
         {
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            WPFmain wPFmain = new WPFmain();
-            wPFmain.Show();
+            Application.Current.Shutdown();
         }
     }
 }
