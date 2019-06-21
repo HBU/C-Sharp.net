@@ -7,16 +7,23 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
+        
         <DataGrid x:Name="DATA_GRID" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="21,57,561,60" RenderTransformOrigin="0.45,0.511">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="姓名" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="年龄" Binding="{Binding Age}"/>
             </DataGrid.Columns>
         </DataGrid>
+        
         <DataGrid x:Name="DataGridView" HorizontalAlignment="Left" Height="302" Margin="295,57,0,0" VerticalAlignment="Top" Width="447"/>
-        <Button Content="显示数据" HorizontalAlignment="Left" Margin="667,377,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+           
+        <Button Content="显示数据" HorizontalAlignment="Left" Margin="295,383,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Label Content="显示数组数据" HorizontalAlignment="Left" Margin="21,29,0,0" VerticalAlignment="Top"/>
         <Label Content="数据库数据" HorizontalAlignment="Left" Margin="295,32,0,0" VerticalAlignment="Top"/>
-        <Label Content="App.config 中 设置好 connectionString" HorizontalAlignment="Left" Margin="295,377,0,0" VerticalAlignment="Top" Width="252"/>
+        <Label Content="App.config 中 设置好 connectionString" HorizontalAlignment="Left" Margin="465,32,0,0" VerticalAlignment="Top" Width="252"/>
+        <Button Content="查询" HorizontalAlignment="Left" Margin="642,383,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="508,383,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="姓名：" HorizontalAlignment="Left" Margin="441,381,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
