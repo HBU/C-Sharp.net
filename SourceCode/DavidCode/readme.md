@@ -2,9 +2,11 @@
 ### OS：Windows 10
 ### Language：C#
 
-| ：---： | ：---： |
-| Name | Notes |
-|C1_1_ConsoleApp	     | 1
+
+ Name | Notes 
+ -|-
+ C1_1_ConsoleApp	     | 1
+
 1|C1_2_WindowsFormsApp  1
 1C1_3	                 2
 1C1_4_WebApplication	 2
