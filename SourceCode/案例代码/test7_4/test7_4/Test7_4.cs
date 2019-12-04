@@ -19,9 +19,9 @@ public partial class Test7_4 : Form
             sr = new StreamReader(new FileStream(@"D:\test7_4.txt",FileMode.Open));
             lblShow.Text = sr.ReadLine();
         }
-        catch (FileNotFoundException e1)
+        catch (FileNotFoundException fnfe)
         {
-            lblShow.Text = e1.ToString();
+            lblShow.Text = fnfe.ToString();
         }
         catch (Exception ex)
         {
