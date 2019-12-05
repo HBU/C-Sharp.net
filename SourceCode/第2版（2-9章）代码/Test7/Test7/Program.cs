@@ -15,7 +15,7 @@ namespace Test7
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Exp7_1.Exp7_1());
+            Application.Run(new Test7_5.Test7_5());
         }
     }
 }
