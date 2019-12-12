@@ -15,7 +15,7 @@ namespace Test8
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Exp8_2.Exp8_2());
+            Application.Run(new Test8_3.Test8_3());
         }
     }
 }

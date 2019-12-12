@@ -22,21 +22,24 @@ namespace Test8_1
 
     private void btnCalc_Click(object sender, EventArgs e)
     {
-        int a = Convert.ToInt32(txtNum1.Text);
-        int b = Convert.ToInt32(txtNum2.Text);
-        MyMath math = new MyMath();
-        //handler = new Caculate(math.Add);   //创建委托对象同时封装方法
-        //lblShow.Text = "两数之和为：" + handler(a, b);   //通过委托对象调用方法
+            int a = Convert.ToInt32(txtNum1.Text);
+             int b = Convert.ToInt32(txtNum2.Text);
+            string test = "";
+              MyMath math = new MyMath();
+            //handler = new Caculate(math.Add);   //创建委托对象同时封装方法
+            //lblShow.Text = "两数之和为：" + handler(a, b);   //通过委托对象调用方法
 
-        //handler = new Caculate(math.Multiply);
-        //lblShow.Text += "\n两数之积为：：" + handler(a, b);
+            //handler = new Caculate(math.Multiply);
+            //lblShow.Text += "\n两数之积为：：" + handler(a, b);
 
-        handler = new Caculate(math.Add);   //使用多路广播机制来创建调用列表
-        handler += new Caculate(math.Multiply);
-        lblShow.Text = "调用后的结果是："+handler(a, b);                    //一次性调用列表中的方法
+            handler = new Caculate(math.Add);   //使用多路广播机制来创建调用列表
+            handler += new Caculate(math.Multiply);
+           
+            lblShow.Text = "调用后的结果是：" + handler(a, b);                    //一次性调用列表中的方法
 
+            //////Math.pow()
 
-    }
+        }
     }
     class MyMath
     {
