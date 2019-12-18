@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Exp9_1.Exp9_1</StartupObject>
+    <StartupObject>Test9_7.Test9_7</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
