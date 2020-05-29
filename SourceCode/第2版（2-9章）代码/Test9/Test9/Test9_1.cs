@@ -12,13 +12,14 @@ namespace Test9_1
             Thread objThread0 = new Thread(new ThreadStart(ActionMethod));           //创建线程
             objThread0.Name = "----------子线程0";                                                           //设置线程名
             objThread0.Start();                                                                                            //启动线程
-
+            Console.WriteLine("#################");
             Thread objThread1 = new Thread(new ThreadStart(ActionMethod));           //创建线程
             objThread1.Name = "----------子线程1";                                                           //设置线程名
             objThread1.Start();                                                                                            //启动线程
-
+            Console.WriteLine("#################");
             //Thread.Sleep(10);
-            ActionMethod();                                                                                              //在主线程中调用ActionMethod()
+            ActionMethod();
+            Console.WriteLine("#################");//在主线程中调用ActionMethod()
         }
 
         static void ActionMethod()//线程调用的方法
@@ -27,6 +28,7 @@ namespace Test9_1
             {
                 Console.WriteLine("{0}:第{1}次", Thread.CurrentThread.Name,count);
                 Thread.Sleep(100);
+                
             }
         }
     }
